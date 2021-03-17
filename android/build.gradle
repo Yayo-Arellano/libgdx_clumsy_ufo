@@ -1,23 +1,31 @@
 android {
     buildToolsVersion "30.0.3"
     compileSdkVersion 30
+
+    flavorDimensions "default"
+    productFlavors {
+        vClumsy { applicationId "com.nopalsoft.clumsy" }
+        vPenis { applicationId "com.nopalsoft.penis" }
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
             java.srcDirs = ['src']
             aidl.srcDirs = ['src']
             renderscript.srcDirs = ['src']
-            res.srcDirs = ['res']
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
         }
+
+        vClumsy { res.srcDirs = ['vClumsy/res'] }
+        vPenis { res.srcDirs = ['vPenis/res'] }
 
     }
     packagingOptions {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.nopalsoft.clumsy"
         minSdkVersion 14
         targetSdkVersion 30
         versionCode 1

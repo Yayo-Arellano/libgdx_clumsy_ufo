@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.nopalsoft.clumsy.MainClumsy;
 import com.nopalsoft.clumsy.handlers.GameServicesHandler;
 import com.nopalsoft.clumsy.handlers.RequestHandler;
 
@@ -13,6 +12,10 @@ public class AndroidLauncher extends AndroidApplication implements RequestHandle
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+        // When I change flavors load different assets
+        if (BuildConfig.APPLICATION_ID.equals("com.nopalsoft.penis")) {
+            Assets.LOAD_FLAPPY_PENIS = true;
+        }
         initialize(new MainClumsy(this, this), config);
     }
 
